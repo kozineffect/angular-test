@@ -9,6 +9,7 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
+<div class="jumbotron">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -35,7 +36,27 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<script>
+</div>
+<div *ngIf="selectedCard">
+      <h2>{{selectedCard.name}}</h2>
+      <img src="selectedCard.imgURL" style="height:50px; width:25px;"/>
+      <div><label>Mana Cost: </label>{{selectedCard.manaCost}}</div>
+      <div>
+        <label>Card Text: </label>
+        {{selectedCard.text}}
+      </div>
+      <div>
+        <label>Card Type: </label>
+        {{selectedCard.type}}
+      </div>
+    </div>
+    <h2>My Heroes</h2>
+    <ul class="magic">
+      <li *ngFor="let magic of magic" (click)="onSelect(magic)" [class.selected]="magic === selectedCard">
+        <span class="badge">{{magic.name}}</span>
+      </li>
+    </ul>
+<!-- <script>
   $('.carousel').carousel('cycle');
-</script>
+</script> -->
 
